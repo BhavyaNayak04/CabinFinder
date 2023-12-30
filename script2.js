@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function()
 {
     const frm = document.getElementById('frm');
+    const button = document.getElementById("subButton");
     frm.addEventListener("submit", function(e)
     {
           e.preventDefault();
+          button.disabled = true;
+          button.classList.add("button-loader");
           const Teacher = document.getElementById("teacher");
           var Name = Teacher.value;
           if(Name !== "")
@@ -26,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function()
                             msg.textContent = "No match found. Try again."
                             display.appendChild(image);
                             display.appendChild(msg);
+                            button.disabled = false;
+                             button.classList.remove("button-loader");
                          }
                        else
                        {
@@ -55,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function()
                             container.appendChild(TLoc);
               
                             movingDiv.appendChild(container);
+
+                            button.disabled = false;
+                             button.classList.remove("button-loader");
                          });
                           
                        }
